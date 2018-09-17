@@ -1,6 +1,9 @@
 ﻿using System;
+using Splat;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamChat.Services;
+using XamChat.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamChat
@@ -11,7 +14,9 @@ namespace XamChat
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            Locator.CurrentMutable.RegisterLazySingleton(() => new DummyUserService(), typeof(IUserService));
+
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
