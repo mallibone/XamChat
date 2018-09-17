@@ -1,24 +1,25 @@
 ﻿using Splat;
 using Xamarin.Forms;
 using XamChat.Services;
+using XamChat.ViewModels;
 using XamChat.Views;
 
 namespace XamChat
 {
     public partial class MainPage : ContentPage
     {
-        private IUserService _userService;
-
-        public MainPage(IUserService userService = null)
+        public MainPage()
         {
             InitializeComponent();
-            _userService = userService ?? Locator.Current.GetService<IUserService>();
+            BindingContext = ViewModel;
         }
 
         protected override void OnAppearing()
         {
-            if (!_userService.IsAuthenticated) Navigation.PushModalAsync(new LoginPage(), false);
+            if (!ViewModel.IsAuthenticated) Navigation.PushModalAsync(new LoginPage(), false);
             base.OnAppearing();
         }
+
+        private MainViewModel ViewModel { get; } = new MainViewModel();
     }
 }

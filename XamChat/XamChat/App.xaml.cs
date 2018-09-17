@@ -15,6 +15,7 @@ namespace XamChat
             InitializeComponent();
 
             Locator.CurrentMutable.RegisterLazySingleton(() => new DummyUserService(), typeof(IUserService));
+            Locator.CurrentMutable.RegisterLazySingleton(() => new DummyChatService(), typeof(IChatService));
 
             MainPage = new NavigationPage(new MainPage());
         }

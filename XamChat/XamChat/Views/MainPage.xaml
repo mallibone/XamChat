@@ -8,14 +8,24 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding Messages}" />
+        <ListView ItemsSource="{Binding Messages}"
+                  Margin="8" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Message}"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <StackLayout Grid.Row="1"
-                     HorizontalOptions="CenterAndExpand">
+                     HorizontalOptions="FillAndExpand"
+                     Margin="8">
             <Entry x:Name="ChatMessage"
                    Placeholder="What's on your mind?"
+                   Text="{Binding CurrentMessage}"
                    HorizontalOptions="StartAndExpand" />
             <Button Text="Send"
-                    Command="{Binding SendMessage}"
+                    HorizontalOptions="Center"
+                    Command="{Binding SendMessageCommand}"
                     CommandParameter="{Binding Source={x:Reference ChatMessage}, Path=Text}" />
         </StackLayout>
     </Grid>
