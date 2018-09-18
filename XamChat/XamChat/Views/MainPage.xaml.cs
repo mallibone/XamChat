@@ -14,10 +14,10 @@ namespace XamChat
             BindingContext = ViewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
-            if (!ViewModel.IsAuthenticated) Navigation.PushModalAsync(new LoginPage(), false);
             base.OnAppearing();
+            if (!ViewModel.IsAuthenticated) await Navigation.PushModalAsync(new LoginPage(), false);
         }
 
         private MainViewModel ViewModel { get; } = new MainViewModel();
