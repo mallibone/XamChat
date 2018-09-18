@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamChat.iOS", "XamChat\XamC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamChat.UWP", "XamChat\XamChat.UWP\XamChat.UWP.csproj", "{A7A4978B-54D7-4A62-B1A9-C4B926D9A427}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamChat", "XamChat\XamChat\XamChat.csproj", "{12F85792-847E-45A2-B6D5-ACA3D9ED3E4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamChat", "XamChat\XamChat\XamChat.csproj", "{12F85792-847E-45A2-B6D5-ACA3D9ED3E4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,11 +52,8 @@ Global
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Ad-Hoc|iPhoneSimulator.Deploy.0 = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Ad-Hoc|x64.ActiveCfg = Release|Any CPU
-		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Ad-Hoc|x64.Build.0 = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Ad-Hoc|x64.Deploy.0 = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
-		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Ad-Hoc|x86.Build.0 = Release|Any CPU
-		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Ad-Hoc|x86.Deploy.0 = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.AppStore|Any CPU.Build.0 = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.AppStore|Any CPU.Deploy.0 = Release|Any CPU
@@ -91,8 +88,6 @@ Global
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Debug|x64.Build.0 = Debug|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Debug|x64.Deploy.0 = Debug|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Debug|x86.Build.0 = Debug|Any CPU
-		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Debug|x86.Deploy.0 = Debug|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FDBE0D7F-A7FA-4ADC-A466-A0B8911D56CE}.Release|Any CPU.Deploy.0 = Release|Any CPU
@@ -163,7 +158,6 @@ Global
 		{29004BC0-37DD-4925-B60C-DF694239060D}.Debug|x64.Build.0 = Debug|iPhone
 		{29004BC0-37DD-4925-B60C-DF694239060D}.Debug|x64.Deploy.0 = Debug|iPhone
 		{29004BC0-37DD-4925-B60C-DF694239060D}.Debug|x86.ActiveCfg = Debug|iPhone
-		{29004BC0-37DD-4925-B60C-DF694239060D}.Debug|x86.Build.0 = Debug|iPhone
 		{29004BC0-37DD-4925-B60C-DF694239060D}.Debug|x86.Deploy.0 = Debug|iPhone
 		{29004BC0-37DD-4925-B60C-DF694239060D}.Release|Any CPU.ActiveCfg = Release|iPhone
 		{29004BC0-37DD-4925-B60C-DF694239060D}.Release|Any CPU.Build.0 = Release|iPhone
