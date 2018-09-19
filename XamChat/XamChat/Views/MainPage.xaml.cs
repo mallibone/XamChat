@@ -8,6 +8,7 @@ namespace XamChat
 {
     public partial class MainPage : ContentPage
     {
+        bool _onAppearingInitial = true;
         public MainPage()
         {
             InitializeComponent();
@@ -17,7 +18,8 @@ namespace XamChat
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (!ViewModel.IsAuthenticated) await Navigation.PushModalAsync(new LoginPage(), false);
+            if (_onAppearingInitial && !ViewModel.IsAuthenticated) await Navigation.PushModalAsync(new LoginPage(), false);
+            _onAppearingInitial = !_onAppearingInitial;
         }
 
         private MainViewModel ViewModel { get; } = new MainViewModel();

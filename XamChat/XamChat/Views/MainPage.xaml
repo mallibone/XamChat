@@ -9,10 +9,12 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ListView ItemsSource="{Binding Messages}"
-                  Margin="8" >
+                  Margin="8"
+                  SeparatorVisibility="None"
+                  SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Message}"></TextCell>
+                    <TextCell Text="{Binding Message}" Detail="{Binding Author.Username}"></TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -22,7 +24,10 @@
             <Entry x:Name="ChatMessage"
                    Placeholder="What's on your mind?"
                    Text="{Binding CurrentMessage}"
-                   HorizontalOptions="StartAndExpand" />
+                   Keyboard="Chat"
+                   ReturnCommand="{Binding SendMessageCommand}"
+                   ReturnCommandParameter="{Binding Source={x:Reference ChatMessage}, Path=Text}"
+                   HorizontalOptions="CenterAndExpand" />
             <Button Text="Send"
                     HorizontalOptions="Center"
                     Command="{Binding SendMessageCommand}"
