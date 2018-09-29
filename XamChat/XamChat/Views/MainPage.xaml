@@ -1,8 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:XamChat"
+             xmlns:local="clr-namespace:XamChat.Views"
              x:Class="XamChat.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ReceivedMessage">
+                <ViewCell>
+                    <Grid Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout BackgroundColor="PaleGreen">
+                            <Label Text="{Binding Message}"
+                                   TextColor="White"
+                                   Margin="8,0"
+                                   LineBreakMode="WordWrap"
+                                   FontSize="Default" />
+                            <Label Text="{Binding Author.Username}"
+                                   Margin="8,0"
+                                   TextColor="LightGray"
+                                   FontSize="Small" />
+                        </StackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="SentMessage">
+                <ViewCell>
+                    <Grid Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout BackgroundColor="CornflowerBlue"
+                                     Grid.Column="1">
+                            <Label Text="{Binding Message}"
+                                   TextColor="White"
+                                   Margin="8,0"
+                                   LineBreakMode="WordWrap"
+                                   FontSize="Default" />
+                            <Label Text="{Binding Author.Username}"
+                                   Margin="8,0"
+                                   TextColor="LightGray"
+                                   FontSize="Small" />
+                        </StackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <local:ChatMessageTemplateSelector x:Key="ChatMessageTemplateSelector"
+                                               SentMessage="{StaticResource SentMessage}"
+                                               ReceivedMessage="{StaticResource ReceivedMessage}" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -10,28 +63,29 @@
         </Grid.RowDefinitions>
         <ListView ItemsSource="{Binding Messages}"
                   Margin="8"
+                  HasUnevenRows="True"
+                  ItemTemplate="{StaticResource ChatMessageTemplateSelector}"
                   SeparatorVisibility="None"
                   SelectionMode="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Message}" Detail="{Binding Author.Username}"></TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
         </ListView>
-        <StackLayout Grid.Row="1"
-                     HorizontalOptions="FillAndExpand"
-                     Margin="8">
+        <Grid Grid.Row="1"
+              Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
             <Entry x:Name="ChatMessage"
                    Placeholder="What's on your mind?"
+                   Margin="8,0"
                    Text="{Binding CurrentMessage}"
                    Keyboard="Chat"
                    ReturnCommand="{Binding SendMessageCommand}"
-                   ReturnCommandParameter="{Binding Source={x:Reference ChatMessage}, Path=Text}"
-                   HorizontalOptions="CenterAndExpand" />
+                   ReturnCommandParameter="{Binding Source={x:Reference ChatMessage}, Path=Text}" />
             <Button Text="Send"
-                    HorizontalOptions="Center"
+                    Grid.Column="1"
+                    Margin="8,0"
                     Command="{Binding SendMessageCommand}"
                     CommandParameter="{Binding Source={x:Reference ChatMessage}, Path=Text}" />
-        </StackLayout>
+        </Grid>
     </Grid>
 </ContentPage>

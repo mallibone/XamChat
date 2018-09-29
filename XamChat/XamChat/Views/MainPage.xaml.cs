@@ -20,6 +20,7 @@ namespace XamChat
             base.OnAppearing();
             if (_onAppearingInitial && !ViewModel.IsAuthenticated) await Navigation.PushModalAsync(new LoginPage(), false);
             _onAppearingInitial = !_onAppearingInitial;
+            ChatMessage.Focus();
         }
 
         private MainViewModel ViewModel { get; } = new MainViewModel();
