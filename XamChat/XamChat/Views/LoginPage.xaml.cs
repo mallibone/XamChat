@@ -10,7 +10,6 @@ namespace XamChat.Views
 		public LoginPage ()
 		{
 			InitializeComponent ();
-
             switch (Device.RuntimePlatform)
             {
                 case Device.macOS:
@@ -21,7 +20,7 @@ namespace XamChat.Views
                     ViewModel.UserAuthenticatedCallback = async () => await Navigation.PopModalAsync(animated: true);
                     break;
             }
-
+            
             BindingContext = ViewModel;
 
 		    SizeChanged += (sender, args) =>

@@ -20,7 +20,11 @@ namespace XamChat
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            //if (_onAppearingInitial && !ViewModel.IsAuthenticated) await Navigation.PushModalAsync(new NavigationPage(new LoginPage()), false);
+            if (_onAppearingInitial && !ViewModel.IsAuthenticated)
+            {
+                await Navigation.PushModalAsync(new LoginPage(), false);
+            }
+            
             _onAppearingInitial = !_onAppearingInitial;
             Messages.ScrollTo(ViewModel.Messages.LastOrDefault(), ScrollToPosition.End, false);
             ViewModel.Messages.CollectionChanged += MessagesChangedHandler;
