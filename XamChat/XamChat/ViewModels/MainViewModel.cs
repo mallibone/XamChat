@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Concurrency;
 using System.Threading.Tasks;
 using ReactiveUI;
 using Splat;
+using Xamarin.Forms;
 using XamChat.Services;
 
 namespace XamChat.ViewModels
@@ -21,13 +24,10 @@ namespace XamChat.ViewModels
             _chatService = chatService ?? Locator.Current.GetService<IChatService>();
             _userService = userService ?? Locator.Current.GetService<IUserService>();
             _chatService.ChatUpdated.Subscribe(ChatUpdated);
-            SendMessageCommand = ReactiveCommand.Create<string, Task>(async (msg) =>
-            {
-                await SendMessage(msg);
-            });
+            SendMessageCommand = ReactiveCommand.CreateFromTask<string>(SendMessage, outputScheduler: Scheduler.CurrentThread);
         }
 
-        public ReactiveCommand<string, Task> SendMessageCommand { get;}
+        public ReactiveCommand<string, Unit> SendMessageCommand { get; }
 
         public string CurrentMessage
         {
@@ -41,7 +41,7 @@ namespace XamChat.ViewModels
         private async Task SendMessage(string message)
         {
             var chatMessage = new ChatMessage
-                {Author = _userService.GetCurrentUser(), Message = message, TimeCreated = DateTime.Now, TimeEdited = DateTime.Now};
+            { Author = _userService.GetCurrentUser(), Message = message, TimeCreated = DateTime.Now, TimeEdited = DateTime.Now };
             await _chatService.SendMessage(chatMessage);
             CurrentMessage = string.Empty;
         }
