@@ -10,7 +10,15 @@ namespace XamChat.Views
 		public LoginPage ()
 		{
 			InitializeComponent ();
-		    ViewModel.UserAuthenticatedCallback = async () => await Navigation.PopModalAsync(animated: true);
+		    switch (Device.RuntimePlatform)
+		    {
+                case "Ooui":
+                    ViewModel.UserAuthenticatedCallback = async () => await Navigation.PopAsync(animated: true);
+                    break;
+                default:
+                    ViewModel.UserAuthenticatedCallback = async () => await Navigation.PopModalAsync(animated: true);
+                    break;
+		    }
 		    BindingContext = ViewModel;
 		}
 

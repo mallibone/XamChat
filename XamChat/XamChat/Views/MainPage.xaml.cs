@@ -18,7 +18,18 @@ namespace XamChat
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (_onAppearingInitial && !ViewModel.IsAuthenticated) await Navigation.PushModalAsync(new LoginPage(), false);
+            if (_onAppearingInitial && !ViewModel.IsAuthenticated)
+            {
+                switch (Device.RuntimePlatform)
+                {
+                    case "Ooui":
+                        await Navigation.PushAsync(new LoginPage(), false);
+                        break;
+                    default:
+                        await Navigation.PushModalAsync(new LoginPage(), false);
+                        break;
+                }
+            }
             _onAppearingInitial = !_onAppearingInitial;
             ChatMessage.Focus();
         }
