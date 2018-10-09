@@ -66,6 +66,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ListView ItemsSource="{Binding Messages}"
+                  x:Name="Messages"
                   Margin="8"
                   HasUnevenRows="True"
                   ItemTemplate="{StaticResource ChatMessageTemplateSelector}"

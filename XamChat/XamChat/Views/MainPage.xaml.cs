@@ -1,4 +1,6 @@
-﻿using Splat;
+﻿using System.Collections.Specialized;
+using System.Linq;
+using Splat;
 using Xamarin.Forms;
 using XamChat.Services;
 using XamChat.ViewModels;
@@ -21,6 +23,19 @@ namespace XamChat
             if (_onAppearingInitial && !ViewModel.IsAuthenticated) await Navigation.PushModalAsync(new LoginPage(), false);
             _onAppearingInitial = !_onAppearingInitial;
             ChatMessage.Focus();
+            Messages.ScrollTo(ViewModel.Messages.LastOrDefault(), ScrollToPosition.End, false);
+            ViewModel.Messages.CollectionChanged += MessagesChangedHandler;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            ViewModel.Messages.CollectionChanged -= MessagesChangedHandler;
+        }
+
+        private void MessagesChangedHandler(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            Messages.ScrollTo(ViewModel.Messages.Last(), ScrollToPosition.End, true);
         }
 
         private MainViewModel ViewModel { get; } = new MainViewModel();
