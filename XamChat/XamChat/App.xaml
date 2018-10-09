@@ -3,6 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamChat.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="PrimaryDark">#1976D2</Color>
+            <Color x:Key="PrimaryLight">#BBDEFB</Color>
+            <Color x:Key="Accent">#448AFF</Color>
+            <Color x:Key="PrimaryTextColor">#212121</Color>
+            <Color x:Key="SecondaryText">#757575</Color>
+            <Color x:Key="Icons">#FFFFFF</Color>
+            <Color x:Key="Divider">#BDBDBD</Color>
 
+            <Style x:Key="BodyStyle"
+                   TargetType="Label"
+                   BaseResourceKey="BodyStyle">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+            <Style x:Key="CaptionStyle"
+                   TargetType="Label"
+                   BaseResourceKey="CaptionStyle">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+            <Style x:Key="ListItemDetailTextStyle"
+                   TargetType="Label"
+                   BaseResourceKey="CaptionStyle">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+            <Style x:Key="ListItemTextStyle"
+                   TargetType="Label"
+                   BaseResourceKey="CaptionStyle">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+            <Style x:Key="SubtitleStyle"
+                   TargetType="Label"
+                   BaseResourceKey="CaptionStyle">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+            <Style x:Key="TitleStyle"
+                   TargetType="Label"
+                   BaseResourceKey="CaptionStyle">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

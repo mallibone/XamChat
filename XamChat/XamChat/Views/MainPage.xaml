@@ -13,16 +13,18 @@
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
 
-                        <StackLayout BackgroundColor="PaleGreen">
+                        <BoxView CornerRadius="10"
+                                 Color="{StaticResource PrimaryLight}" />
+                        <StackLayout >
                             <Label Text="{Binding Message}"
-                                   TextColor="White"
+                                   TextColor="{StaticResource PrimaryTextColor}"
                                    Margin="8,0"
                                    LineBreakMode="WordWrap"
-                                   FontSize="Default" />
+                                   FontSize="12" />
                             <Label Text="{Binding Author.Username}"
                                    Margin="8,0"
-                                   TextColor="LightGray"
-                                   FontSize="Small" />
+                                   TextColor="{StaticResource PrimaryTextColor}"
+                                   FontSize="8" />
                         </StackLayout>
                     </Grid>
                 </ViewCell>
@@ -35,17 +37,19 @@
                             <ColumnDefinition Width="3*" />
                         </Grid.ColumnDefinitions>
 
-                        <StackLayout BackgroundColor="CornflowerBlue"
-                                     Grid.Column="1">
+                        <BoxView Grid.Column="1"
+                                 CornerRadius="10"
+                                 Color="{StaticResource PrimaryDark}" />
+                        <StackLayout Grid.Column="1">
                             <Label Text="{Binding Message}"
-                                   TextColor="White"
+                                   TextColor="{StaticResource Icons}"
                                    Margin="8,0"
                                    LineBreakMode="WordWrap"
-                                   FontSize="Default" />
+                                   FontSize="12" />
                             <Label Text="{Binding Author.Username}"
                                    Margin="8,0"
-                                   TextColor="LightGray"
-                                   FontSize="Small" />
+                                   TextColor="{StaticResource Icons}"
+                                   FontSize="8" />
                         </StackLayout>
                     </Grid>
                 </ViewCell>
@@ -75,13 +79,16 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Entry x:Name="ChatMessage"
-                   Placeholder="What's on your mind?"
+                   Placeholder="What is on your mind?"
                    Margin="8,0"
                    Text="{Binding CurrentMessage}"
                    Keyboard="Chat"
                    ReturnCommand="{Binding SendMessageCommand}"
                    ReturnCommandParameter="{Binding Source={x:Reference ChatMessage}, Path=Text}" />
             <Button Text="Send"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="{StaticResource Icons}"
+                    CornerRadius="10"
                     Grid.Column="1"
                     Margin="8,0"
                     Command="{Binding SendMessageCommand}"

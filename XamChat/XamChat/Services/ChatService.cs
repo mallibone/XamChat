@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive.Subjects;
 using System.Text;
 using System.Threading.Tasks;
+using XamChat.Models;
 using XamChat.ViewModels;
 
 namespace XamChat.Services
@@ -23,11 +24,20 @@ namespace XamChat.Services
             _messages = new List<ChatMessage>();
             _chatHasChanged = new Subject<IEnumerable<ChatMessage>>();
         }
-        public async Task SendMessage(ChatMessage message)
+        public Task SendMessage(ChatMessage message)
         {
-            var numberOfMessagesToTake = _messages.Count > 99 ? 99 : _messages.Count;
+            var numberOfMessagesToTake = _messages.Count > 99 ? 98 : _messages.Count;
             _messages = new List<ChatMessage>(_messages.Take(numberOfMessagesToTake)) {message};
-            await Task.Delay(300);
+            _chatHasChanged.OnNext(_messages);
+            SendDummyMessage();
+            return Task.CompletedTask;
+        }
+
+        private async void SendDummyMessage()
+        {
+            await Task.Delay(2000);
+            var dummyMessage = new ChatMessage {Author = new User {Username = "Dr. Who"}, TimeCreated = DateTime.Now, Message = "Come on it's not rocket science only quantum mechanics.", TimeEdited = DateTime.Now};
+            _messages = new List<ChatMessage>(_messages.Take(_messages.Count)) {dummyMessage};
             _chatHasChanged.OnNext(_messages);
         }
 
