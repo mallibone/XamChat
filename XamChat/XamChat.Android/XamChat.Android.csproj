@@ -32,7 +32,6 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
-    <EnableProguard>false</EnableProguard>
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>
@@ -49,7 +48,6 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AotAssemblies>true</AotAssemblies>
     <EnableLLVM>true</EnableLLVM>
-    <EnableProguard>false</EnableProguard>
     <AndroidSupportedAbis>armeabi-v7a;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
@@ -106,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamChat\XamChat.csproj">
-      <Project>{6A74B3C7-B7A3-44E9-BD60-173A02636D77}</Project>
+      <Project>{12F85792-847E-45A2-B6D5-ACA3D9ED3E4A}</Project>
       <Name>XamChat</Name>
     </ProjectReference>
   </ItemGroup>
