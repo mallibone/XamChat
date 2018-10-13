@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamChat.Views"
@@ -91,7 +91,7 @@
                     TextColor="{StaticResource Icons}"
                     CornerRadius="10"
                     Grid.Column="1"
-                    Margin="8,0"
+                    Padding="8,0"
                     Command="{Binding SendMessageCommand}"
                     CommandParameter="{Binding Source={x:Reference ChatMessage}, Path=Text}" />
         </Grid>
