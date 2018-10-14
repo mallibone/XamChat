@@ -1,29 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XamChat.Views.LoginPage" BackgroundColor="White">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamChat.Views.LoginPage"
+             BackgroundColor="White">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Margin="8"
+        <StackLayout x:Name="LoginPageLayout"
+                         Margin="8"
+                         Orientation="Vertical"
+                         HorizontalOptions="Center"
                          VerticalOptions="Center">
-                <Image Source="XamChat.png" />
-                <Label Text="Welcome to Xam Chat - Your efficient chat solution" 
-                       HorizontalOptions="CenterAndExpand" 
-                       HorizontalTextAlignment="Center"
-                       FontSize="Medium" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="LoginOrientation">
+                    <VisualState Name="Landscape">
+                        <VisualState.Setters>
+                            <Setter Property="Orientation"
+                                        Value="Horizontal" />
+                            <Setter Property="HorizontalOptions"
+                                        Value="Center" />
+                            <Setter Property="VerticalOptions"
+                                        Value="Center" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState Name="Portrait">
+                        <VisualState.Setters>
+                            <Setter Property="Orientation"
+                                        Value="Vertical" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Image Source="XamChat.png" />
+            <StackLayout x:Name="LoginPageEntryLayout">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="LoginEntryOrientation">
+                        <VisualState Name="Landscape">
+                            <VisualState.Setters>
+                                <Setter Property="WidthRequest"
+                                        Value="500" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Portrait">
+                            <VisualState.Setters>
+                                <Setter Property="WidthRequest"
+                                        Value="350" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Label Text="Welcome to Xam Chat - Your efficient chat solution"
+                           HorizontalOptions="CenterAndExpand"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium" />
                 <Entry x:Name="Username"
-                       Placeholder="Username"
-                       Text="{Binding Username}"
-                       HorizontalOptions="FillAndExpand"
-                       ReturnCommand="{Binding LoginCommand}"
-                       Keyboard="Email" />
+                           Placeholder="Username"
+                           Text="{Binding Username}"
+                           HorizontalOptions="FillAndExpand"
+                           ReturnCommand="{Binding LoginCommand}"
+                           Keyboard="Email" />
                 <Button Text="Login"
-                        HorizontalOptions="Center"
-                        Command="{Binding LoginCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="{StaticResource Icons}"
-                        CornerRadius="10"
-                        WidthRequest="{Binding Source={x:Reference Username}, Path=Width}"
-                        Padding="16,8" />
+                            HorizontalOptions="Center"
+                            Command="{Binding LoginCommand}"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="{StaticResource Icons}"
+                            CornerRadius="10"
+                            WidthRequest="{Binding Source={x:Reference Username}, Path=Width}"
+                            Padding="16,8" />
             </StackLayout>
-        </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
