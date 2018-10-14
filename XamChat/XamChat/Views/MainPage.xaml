@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamChat.Views"
-             x:Class="XamChat.MainPage">
+             x:Class="XamChat.MainPage"
+             BackgroundColor="{StaticResource Icons}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="ReceivedMessage">
@@ -67,6 +68,7 @@
         </Grid.RowDefinitions>
         <ListView ItemsSource="{Binding Messages}"
                   x:Name="Messages"
+                  BackgroundColor="{StaticResource Icons}"
                   Margin="8"
                   HasUnevenRows="True"
                   ItemTemplate="{StaticResource ChatMessageTemplateSelector}"

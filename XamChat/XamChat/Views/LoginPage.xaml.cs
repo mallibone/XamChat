@@ -10,19 +10,25 @@ namespace XamChat.Views
 		public LoginPage ()
 		{
 			InitializeComponent ();
-		    ViewModel.UserAuthenticatedCallback = async () => await Navigation.PopModalAsync(animated: true);
-		    BindingContext = ViewModel;
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.macOS:
+                case Device.GTK:
+                    ViewModel.UserAuthenticatedCallback = async () => await Navigation.PushModalAsync(new MainPage(), animated: true);
+                    break;
+                default:
+                    ViewModel.UserAuthenticatedCallback = async () => await Navigation.PopModalAsync(animated: true);
+                    break;
+            }
+
+            BindingContext = ViewModel;
 
 		    SizeChanged += (sender, args) =>
 		    {
 		        string visualState = Width > Height ? "Landscape" : "Portrait";
 		        VisualStateManager.GoToState(LoginPageLayout, visualState);
 		        VisualStateManager.GoToState(LoginPageEntryLayout, visualState);
-
-		        //foreach (View child in menuStack.Children)
-		        //{
-		        //    VisualStateManager.GoToState(child, visualState);
-		        //}
 		    };
         }
 

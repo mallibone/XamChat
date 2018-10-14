@@ -17,7 +17,16 @@ namespace XamChat
             Locator.CurrentMutable.RegisterLazySingleton(() => new DummyUserService(), typeof(IUserService));
             Locator.CurrentMutable.RegisterLazySingleton(() => new DummyChatService(), typeof(IChatService));
 
-            MainPage = new NavigationPage(new MainPage());
+            switch (Device.RuntimePlatform)
+            {
+                case Device.macOS:
+                case Device.GTK:
+                    MainPage = new NavigationPage(new LoginPage());
+                    break;
+                default:
+                    MainPage = new NavigationPage(new MainPage());
+                    break;
+            }
         }
 
         protected override void OnStart()
