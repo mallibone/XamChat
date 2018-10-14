@@ -162,8 +162,15 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\XamChat\XamChat.csproj">
-      <Project>{6A74B3C7-B7A3-44E9-BD60-173A02636D77}</Project>
+      <Project>{12F85792-847E-45A2-B6D5-ACA3D9ED3E4A}</Project>
       <Name>XamChat</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
   </ItemGroup>
 </Project>
