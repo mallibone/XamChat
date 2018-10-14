@@ -22,7 +22,6 @@ namespace XamChat
             base.OnAppearing();
             if (_onAppearingInitial && !ViewModel.IsAuthenticated) await Navigation.PushModalAsync(new LoginPage(), false);
             _onAppearingInitial = !_onAppearingInitial;
-            //ChatMessage.Focus();
             Messages.ScrollTo(ViewModel.Messages.LastOrDefault(), ScrollToPosition.End, false);
             ViewModel.Messages.CollectionChanged += MessagesChangedHandler;
         }
