@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reactive.Concurrency;
+using System.Threading.Tasks;
 using ReactiveUI;
 using Splat;
 using Xamarin.Forms;
@@ -15,7 +17,7 @@ namespace XamChat.ViewModels
         public LoginViewModel(IUserService userService = null)
         {
             var validLoginData = this.WhenAnyValue(x => x.Username, username => !string.IsNullOrEmpty(username));
-            LoginCommand = ReactiveCommand.Create(AuthenticateUser, validLoginData);
+            LoginCommand = ReactiveCommand.CreateFromTask(AuthenticateUser, validLoginData, outputScheduler: Scheduler.CurrentThread);
             _userService = userService ?? Locator.Current.GetService<IUserService>();
         }
 
@@ -34,7 +36,7 @@ namespace XamChat.ViewModels
         public ReactiveCommand LoginCommand { get; set; }
         public Action UserAuthenticatedCallback { get; set; } = () => {};
 
-        private async void AuthenticateUser()
+        private async Task AuthenticateUser()
         {
             IsBusy = true;
             var isAuthenticated = await _userService.Authenticate(Username, Password);
