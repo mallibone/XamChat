@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamChat.Views.LoginPage"
-             BackgroundColor="White">
+             x:Class="XamChat.Views.LoginPage">
     <ContentPage.Content>
         <StackLayout x:Name="LoginPageLayout"
                          Margin="8"
@@ -29,7 +28,7 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Image Source="XamChat.png" />
+            <Image Source="XamChat.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="256" WidthRequest="256" />
             <StackLayout x:Name="LoginPageEntryLayout">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="LoginEntryOrientation">

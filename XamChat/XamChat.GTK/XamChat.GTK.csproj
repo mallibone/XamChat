@@ -150,7 +150,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="webkit-sharp.dll.config" />
@@ -160,6 +159,11 @@
       <Project>{12f85792-847e-45a2-b6d5-aca3d9ed3e4a}</Project>
       <Name>XamChat</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XamChat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
