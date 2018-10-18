@@ -29,7 +29,7 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Image Source="XamChat.png" />
+            <Image Source="XamChat" WidthRequest="256" HeightRequest="256" />
             <StackLayout x:Name="LoginPageEntryLayout">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="LoginEntryOrientation">
