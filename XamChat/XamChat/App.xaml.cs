@@ -20,7 +20,6 @@ namespace XamChat
             switch (Device.RuntimePlatform)
             {
                 case Device.macOS:
-                case Device.GTK:
                     MainPage = new NavigationPage(new LoginPage());
                     break;
                 default:
